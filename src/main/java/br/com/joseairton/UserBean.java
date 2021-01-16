@@ -3,13 +3,13 @@ package br.com.joseairton;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
-
+import javax.faces.bean.ViewScoped;
 
 import br.com.dao.DaoGeneric;
 import br.com.entities.Usuario;
 
-
-@ManagedBean(name = "userBean") // reference for utilize at the jsf (front)
+@ViewScoped
+@ManagedBean(name = "userBean")
 public class UserBean implements Serializable {
 	
 	
@@ -17,8 +17,8 @@ public class UserBean implements Serializable {
 	private Usuario usuario = new Usuario();
 	private DaoGeneric<Usuario> daoGeneric = new DaoGeneric<Usuario>();
 	
-	public String salvar() {
-		daoGeneric.save(usuario);		
+	public String salva() {
+		daoGeneric.salvar(usuario);	
 		return "";
 	}
 

@@ -14,13 +14,13 @@
 
 	<h:form>
 		<h:panelGrid>
-			<h:outputLabel value="#{userBean.usuario.login}" />
-			<h:inputText />
+			<h:outputLabel value="Login"/>
+			<h:inputText  value="#{userBean.usuario.login}" />
 
-			<h:outputLabel value="#{userBean.usuario.senha}" />
-			<h:inputSecret />
+			<h:outputLabel  value="Senha"/>
+			<h:inputSecret value="#{userBean.usuario.senha}"/>
 			
-			<h:commandButton value="Salvar" action="#{userBean.salvar}"/>
+			<h:commandButton value="Cadastrar" action="#{userBean.salva}"/>
 		</h:panelGrid>
 	</h:form>
 

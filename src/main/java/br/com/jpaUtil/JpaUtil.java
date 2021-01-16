@@ -6,13 +6,9 @@ import javax.persistence.Persistence;
 
 public class JpaUtil {
 
-	private static EntityManagerFactory factory = null;
+	private static EntityManagerFactory factory;
 
 	static {
-		init();
-	}
-	
-	private static void init() {
 		if (factory == null) {
 			factory = Persistence.createEntityManagerFactory("projetoautopecas");
 		}
@@ -20,6 +16,10 @@ public class JpaUtil {
 
 	public static EntityManager getEntityManager() {
 		return factory.createEntityManager();
+	}
+	
+	public static Object getPrimaryKey(Object entity) {
+		return factory.getPersistenceUnitUtil().getIdentifier(entity);
 	}
 
 }
