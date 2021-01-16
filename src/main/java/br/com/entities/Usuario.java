@@ -7,13 +7,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity // cria tabela no banco de dados
+@Entity
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id // identifica que é a primary key da entidade/tabela
-	@GeneratedValue(strategy = GenerationType.AUTO) // usa gerador de pk do banco de dados
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 
 	private String login;
