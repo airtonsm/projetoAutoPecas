@@ -7,7 +7,7 @@
 	<persistence-unit name="projetoautopecas">
 
 
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>br.com.entities.Usuario</class>
 
 		<properties>
