@@ -38,7 +38,12 @@ public class UserBean implements Serializable {
 		this.daoGeneric = daoGeneric;
 	}
 	
-	
+	public String logar() {
+		
+		System.err.println(usuario.getLogin() + " - " + usuario.getSenha());
+		
+		return"index.jsf";
+	}
 	
 	
 }
