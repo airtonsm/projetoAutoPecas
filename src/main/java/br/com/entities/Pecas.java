@@ -13,12 +13,14 @@ public class Pecas implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
 	private String codFabrica;
 
 	private String descricao;
+	
+	private String marca;
 
 	private String aplicacao;
 
@@ -52,6 +54,14 @@ public class Pecas implements Serializable {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+	
+	public String getMarca() {
+		return marca;
+	}
+	
+	public void setMarca(String marca) {
+		this.marca = marca;
 	}
 
 	public String getAplicacao() {
@@ -117,6 +127,11 @@ public class Pecas implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+	
+	public String calc() {		
+		valorVenda = valorCusto + (valorCusto * taxa/100);		
+		return String.valueOf(valorVenda);
 	}
 
 }
