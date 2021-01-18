@@ -128,10 +128,7 @@ public class Pecas implements Serializable {
 			return false;
 		return true;
 	}
+
 	
-	public String calc() {		
-		valorVenda = valorCusto + (valorCusto * taxa/100);		
-		return String.valueOf(valorVenda);
-	}
 
 }

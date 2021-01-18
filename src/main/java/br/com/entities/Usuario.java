@@ -20,6 +20,8 @@ public class Usuario implements Serializable {
 
 	private String senha;
 	
+	private String cargo;
+	
 	public Usuario() {
 		
 	}
@@ -46,6 +48,14 @@ public class Usuario implements Serializable {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	
+	public String getCargo() {
+		return cargo;
+	}
+	
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
 	}
 
 	@Override

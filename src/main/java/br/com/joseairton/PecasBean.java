@@ -32,10 +32,16 @@ public class PecasBean implements Serializable {
 	public void setDaoGeneric(DaoGeneric<Pecas> daoGeneric) {
 		this.daoGeneric = daoGeneric;
 	}
-
-	public String salvar() {
-		daoGeneric.salvar(pecas);
-		return "";
+	
+	public void calcular() {
+		pecas.setValorVenda(pecas.getValorCusto() + (pecas.getValorCusto() * pecas.getTaxa()/100));
 	}
+
+	public void salvar() {
+		daoGeneric.salvar(pecas);
+		pecas = new Pecas();
+	}
+
+
 
 }

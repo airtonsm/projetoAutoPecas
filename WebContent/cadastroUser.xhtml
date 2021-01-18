@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
 	<title>Cadastro Usuário</title>
@@ -10,17 +12,31 @@
 
 <h:body>
 
-	<h1 style="margin-top:5%; margin-left:30%">Cadastra Novo Usuário</h1>
+	<ui:include src="/menu.xhtml"></ui:include>
+
+	<h1 style="margin-top: 2%; margin-left: 40%">Cadastra Novo Usuário</h1>
 
 	<h:form style="margin-top:5%; margin-left:40%">
 		<h:panelGrid>
-			<h:outputLabel value="Login"/>
-			<h:inputText  value="#{userBean.usuario.login}" />
+			<h:outputLabel value="Login" />
+			<h:inputText value="#{userBean.usuario.login}" />
 
-			<h:outputLabel  value="Senha"/>
-			<h:inputSecret value="#{userBean.usuario.senha}"/>
+			<h:outputLabel value="Senha" />
+			<h:inputSecret value="#{userBean.usuario.senha}" />
 			
-			<h:commandButton value="Cadastrar" action="#{userBean.salva}"/>
+			<h:outputLabel value="Cargo"/>
+			<h:selectOneMenu>
+				<f:selectItem itemValue="ADMINISTRADOR" itemLabel="Administrador"/>
+				<f:selectItem itemValue="GERENTE" itemLabel="Gerente"/>
+				<f:selectItem itemValue="CAIXA" itemLabel="Caixa"/>
+				<f:selectItem itemValue="VENDEDOR" itemLabel="Vendedor"/>
+				<f:selectItem itemValue="ESTOQUE" itemLabel="Estoque"/>
+				<f:selectItem itemValue="EXPEDICAO" itemLabel="Expedição"/>	
+			</h:selectOneMenu>
+			
+			<br/>
+
+			<h:commandButton value="Cadastrar" action="#{userBean.salva}" />
 		</h:panelGrid>
 	</h:form>
 

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+	<title>Vendas</title>
+
+</h:head>
+
+<h:body>
+
+	<ui:include src="/menu.xhtml"></ui:include>
+
+	<h1 style="margin-top: 2%; margin-left: 40%">Cadastro de Cliente</h1>
+
+	<h:form style="margin-top:5%; margin-left:3%">
+		<h:panelGrid>
+			<h:column>
+				<h:outputLabel value="Vendador: " />
+				<h:inputText value="" style="margin-right:0.5cm"/>
+
+				<h:outputLabel value="Nome Cliente: " />
+				<h:inputText value="" style="margin-right:0.5cm"/>
+
+				<h:outputLabel value="N° pedido: " />
+				<h:inputText value="" style="margin-right:0.5cm"/>
+
+				<h:outputLabel value="Data: " />
+				<h:inputText value="" style="margin-right:0.5cm"/>
+
+			</h:column>
+			
+			<h:dataTable border="1">
+				<f:facet name="header">
+					<h:outputText value="Itens adicionados no pedido"/>
+				</f:facet>
+				
+				<h:column>
+					<f:facet name="header">código Produto</f:facet>
+					<h:inputText pt:placeholder="Código Produto"/>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Descrição</f:facet>
+					<h:inputText pt:placeholder="Código Produto"/>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Quantidade</f:facet>
+					<h:inputText pt:placeholder="Código Produto"/>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">valor unitário</f:facet>
+					<h:inputText pt:placeholder="Código Produto"/>
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">valor total</f:facet>
+					<h:inputText pt:placeholder="Código Produto"/>
+				</h:column>
+			
+			
+			</h:dataTable>
+
+			<h:commandButton value="Finalizar venda"  />
+		</h:panelGrid>
+	</h:form>
+
+
+</h:body>
+
+</html>

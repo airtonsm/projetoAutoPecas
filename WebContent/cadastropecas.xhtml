@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
@@ -11,37 +12,62 @@
 
 <h:body>
 
-	<h1 style="margin-top:5%; margin-left:30%">Cadastra de Peças</h1>
+	<ui:include src="/menu.xhtml" />
 
-	<h:form style="margin-top:5%; margin-left:40%">
+	<h1 style="margin-top: 2%; margin-left: 40%">Cadastra de Peças</h1>
+
+	<h:form style="margin-top:5%; margin-left:5%">
+
+
 		<h:panelGrid>
-			
-			<h:outputLabel  value="Cod. Fabricante"/>
-			<h:inputText value="#{pecasBean.pecas.codFabrica}"/>
+			<h:column>
+				<h:outputLabel value="Cod. Fabricante: " />
+				<h:inputText value="#{pecasBean.pecas.codFabrica}"
+					style="margin-right:1cm" />
 
-			<h:outputLabel  value="Descrição"/>
-			<h:inputText value="#{pecasBean.pecas.descricao}"/>
+				<h:outputLabel value="Descrição: " />
+				<h:inputText value="#{pecasBean.pecas.descricao}"
+					style="margin-right:1cm" />
+
+				<h:outputLabel value="Aplicação: " />
+				<h:inputText value="#{pecasBean.pecas.aplicacao}"
+					style="margin-right:1cm" />
+			</h:column>
+			<br />
+			<h:column>
+
+				<h:outputLabel value="Unidade: " />
+				<h:selectOneMenu value="#{pecasBean.pecas.unidade}"
+					style="margin-right:0.5cm">
+					<f:selectItem itemValue="Uni" itemLabel="Unidade (Uni)" />
+					<f:selectItem itemValue="L" itemLabel="Litros (L)" />
+					<f:selectItem itemValue="cx" itemLabel="Caixa (Cx)" />
+					<f:selectItem itemValue="M" itemLabel="Metros (M)" />
+					<f:selectItem itemValue="Kg" itemLabel="quilogramas (Kg)" />
+					<f:selectItem itemValue="cm" itemLabel="Centímetros(Cm)" />
+					<f:selectItem itemValue="m2" itemLabel="Metros quadrado (m²)" />
+					<f:selectItem itemLabel="[--Selecionar--]" />
+				</h:selectOneMenu>
+
+
+				<h:outputLabel value="Valor custo: " />
+				<h:inputText value="#{pecasBean.pecas.valorCusto}"
+					style="margin-right:0.5cm" />
+
+
+
+				<h:outputLabel value="Taxa(%) " />
+				<h:inputText value="#{pecasBean.pecas.taxa}"
+					style="margin-right:0.5cm" />
+
+				<h:outputLabel value="Valor venda " />
+				<h:inputText readonly="true" style="margin-right:0.5cm" value="#{pecasBean.pecas.valorVenda}" required="true" />
 			
-			<h:outputLabel  value="Aplicação"/>
-			<h:inputText value="#{pecasBean.pecas.aplicacao}"/>
-			
-			<h:outputLabel  value="Unidade"/>
-			<h:selectOneMenu value="#{pecasBean.pecas.unidade}">
-				<f:selectItem itemValue="Uni" itemLabel="Unidade"/>
-				<f:selectItem itemValue="litros" itemLabel="Litros"/>
-				<f:selectItem itemLabel="[--Selecionar--]"/>
-			</h:selectOneMenu>
-			
-			<h:outputLabel  value="Valor de custo"/>
-			<h:inputText value="#{pecasBean.pecas.valorCusto}"/>
-			
-			<h:outputLabel  value="Taxa(%)"/>
-			<h:inputText value="#{pecasBean.pecas.taxa}"/>
-			
-			<h:outputLabel  value="Valor de venda"/>
-			<h:inputText value="#{pecasBean.pecas}" readonly="true"/>		
-			
-			<h:commandButton value="Cadastrar" action="#{pecasBean.pecas.calc}"/>
+			</h:column>
+			<br/>
+			<h:commandButton value="Calcular valor de venda" actionListener="#{pecasBean.calcular}" />
+			<br/>
+			<h:commandButton value="Cadastrar" actionListener="#{pecasBean.salvar}" />
 		</h:panelGrid>
 	</h:form>
 

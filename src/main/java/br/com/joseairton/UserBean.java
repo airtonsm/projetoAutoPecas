@@ -3,7 +3,6 @@ package br.com.joseairton;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -12,7 +11,7 @@ import br.com.entities.Usuario;
 import br.com.repositorio.IDaoUsuario;
 import br.com.repositorio.IDaoUsuarioImpl;
 
-@ViewScoped
+
 @ManagedBean(name = "userBean")
 public class UserBean implements Serializable {
 	

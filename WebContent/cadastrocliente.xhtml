@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
@@ -11,7 +12,9 @@
 
 <h:body>
 
-	<h1 style="margin-top: 5%; margin-left: 30%">Cadastro de Cliente</h1>
+	<ui:include src="/menu.xhtml"></ui:include>
+
+	<h1 style="margin-top: 2%; margin-left: 40%">Cadastro de Cliente</h1>
 
 	<h:form style="margin-top:5%; margin-left:40%">
 		<h:panelGrid>
@@ -31,6 +34,11 @@
 
 			<h:outputLabel value="CPF" />
 			<h:inputText value="#{clienteBean.cliente.cpf}"/>
+			
+			<h:outputLabel value="Data Nascimento" />
+			<h:inputText value="#{clienteBean.cliente.dataNascimento}">
+				<f:convertDateTime pattern="dd/MM/yyyy"/>
+			</h:inputText>
 
 			<h:outputLabel value="Contato" />
 			<h:inputText value="#{clienteBean.cliente.contato}"/>
