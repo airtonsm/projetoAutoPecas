@@ -11,14 +11,24 @@
 
 	<h:form id="formMenu" style="margin-top:3%; margin-left:28%">
 
-		<h:commandLink value="Cadastrar Usuário" action="cadastroUser"  style="margin-left:1cm"/>
-		
-		<h:commandLink value="Cadastrar Cliente" action="cadastrocliente"  style="margin-left:1cm"/>
-		
-		<h:commandLink value="Cadastrar Peças" action="cadastropecas"  style="margin-left:1cm"/>
-		
-		<h:commandLink value="Vendas" action="venda"  style="margin-left:1cm"/>
+		<h:column rendered="#{userBean.permiteAcesso('ADMINISTRADOR')}">
+			<h:commandLink value="Cadastrar Usuário" action="cadastroUser"
+				style="margin-left:1cm" />
+		</h:column>
 
+		<h:column rendered="#{userBean.permiteAcesso('ADMINISTRADOR')}">
+			<h:commandLink value="Cadastrar Cliente" action="cadastrocliente"
+				style="margin-left:1cm" />
+		</h:column>
+
+		<h:column>
+			<h:commandLink value="Cadastrar Peças" action="cadastropecas"
+				style="margin-left:1cm" />
+		</h:column>
+
+		<h:column>
+			<h:commandLink value="Vendas" action="venda" style="margin-left:1cm" />
+		</h:column>
 	</h:form>
 
 </h:body>

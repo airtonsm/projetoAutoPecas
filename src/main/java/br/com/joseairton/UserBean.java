@@ -61,5 +61,16 @@ public class UserBean implements Serializable {
 	}
 	
 	
+	public boolean permiteAcesso(String acesso) {
+		
+		FacesContext context = FacesContext.getCurrentInstance();
+		ExternalContext externalContext = context.getExternalContext();
+		Usuario user = (Usuario) externalContext.getSessionMap().get("usuarioLogado");
+		
+		
+		return user.getCargo().equals(acesso);
+	}
+	
+	
 }
 	

@@ -25,7 +25,7 @@
 			<h:inputSecret value="#{userBean.usuario.senha}" />
 			
 			<h:outputLabel value="Cargo"/>
-			<h:selectOneMenu>
+			<h:selectOneMenu value="#{userBean.usuario.cargo}">
 				<f:selectItem itemValue="ADMINISTRADOR" itemLabel="Administrador"/>
 				<f:selectItem itemValue="GERENTE" itemLabel="Gerente"/>
 				<f:selectItem itemValue="CAIXA" itemLabel="Caixa"/>
