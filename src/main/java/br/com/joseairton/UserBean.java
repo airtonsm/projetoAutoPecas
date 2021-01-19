@@ -26,12 +26,7 @@ public class UserBean implements Serializable {
 
 	private IDaoUsuario idaoUsuario = new IDaoUsuarioImpl();
 
-	public String salva() {
-		daoGeneric.salvar(usuario);
-		usuario = new Usuario();
-		carregarUsuario();
-		return "";
-	}
+
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -73,6 +68,20 @@ public class UserBean implements Serializable {
 
 		return "index.jsf";
 	}
+	
+	public String salva() {
+		daoGeneric.salvar(usuario);
+		usuario = new Usuario();
+		carregarUsuario();
+		return "";
+	}
+	
+	public String delete() {
+		daoGeneric.deletePorId(usuario);
+		usuario = new Usuario();
+		carregarUsuario();
+		return "";
+	}
 
 	public boolean permiteAcesso(String acesso) {
 
@@ -83,7 +92,7 @@ public class UserBean implements Serializable {
 		return user.getCargo().equals(acesso);
 	}
 
-	@PostConstruct
+	@PostConstruct 
 	public void carregarUsuario() {
 		usuarios = daoGeneric.getListEntitie(Usuario.class);
 	}

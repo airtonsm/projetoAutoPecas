@@ -18,6 +18,11 @@
 
 	<h:form style="margin-top:5%; margin-left:40%">
 		<h:panelGrid>
+			
+			
+			<h:outputLabel value="Id" />
+			<h:inputText value="#{userBean.usuario.id}" readonly="true"/>		
+		
 			<h:outputLabel value="Login" />
 			<h:inputText value="#{userBean.usuario.login}" />
 
@@ -44,7 +49,7 @@
 
 		<h:dataTable value="#{userBean.usuarios}" var="user" border="1">
 
-			<f:facet name="heade">
+			<f:facet name="header">
 				<h:outputLabel value="Lista de Usuários cadastrados" />
 			</f:facet>
 
@@ -66,6 +71,11 @@
 			<h:column>
 				<f:facet name="header">Cargo</f:facet>
 				<h:outputText value="#{user.cargo}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Excluir</f:facet>
+				<h:commandButton value="Excluir" action="#{userBean.delete}"/>
 			</h:column>
 
 		</h:dataTable>
