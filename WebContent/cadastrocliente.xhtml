@@ -16,36 +16,53 @@
 
 	<h1 style="margin-top: 2%; margin-left: 40%">Cadastro de Cliente</h1>
 
-	<h:form style="margin-top:5%; margin-left:40%">
+	<h:form style="margin-top:5%; margin-left:5%">
 		<h:panelGrid>
+			<h:column>
+				<h:outputLabel value="Nome/Razão Social " />
+				<h:inputText value="#{clienteBean.cliente.nome}"
+					style="margin-right:0.5cm" />
 
-			<h:outputLabel value="Nome/Razão Social" />
-			<h:inputText value="#{clienteBean.cliente.nome}"/>
+
+				<h:outputLabel value="Sexo " />
+				<h:selectOneMenu value="#{clienteBean.cliente.sexo}"
+					style="margin-right:0.5cm">
+					<f:selectItem itemValue="M" itemLabel="Masculino" />
+					<f:selectItem itemValue="F" itemLabel="Feminino" />
+					<f:selectItem itemLabel="[--Selecionar sexo--]" />
+				</h:selectOneMenu>
+
+
+				<h:outputLabel value="RG " />
+				<h:inputText value="#{clienteBean.cliente.RG}"
+					style="margin-right:0.5cm" />
+
+				<h:outputLabel value="CPF " />
+				<h:inputText value="#{clienteBean.cliente.cpf}" />
+
+			</h:column>
+			<br />
+			<h:column>
+				<h:outputLabel value="Data Nascimento "  />
+				<h:inputText value="#{clienteBean.cliente.dataNascimento}" style="margin-right:0.5cm">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:inputText>
+
+
+
+				<h:outputLabel value="Contato " />
+				<h:inputText value="#{clienteBean.cliente.contato}"
+					style="margin-right:0.5cm" />
+
+
+
+				<h:outputLabel value="Email " />
+				<h:inputText value="#{clienteBean.cliente.email}"
+					style="margin-right:0.5cm" />
+			</h:column>
+
+			<br />
 			
-			<h:outputLabel value="Sexo"/>
-			<h:selectOneMenu value="#{clienteBean.cliente.sexo}">				
-				<f:selectItem itemValue="M" itemLabel="Masculino"/>
-				<f:selectItem itemValue="F" itemLabel="Feminino"/>
-				<f:selectItem itemLabel="[--Selecionar sexo--]"/>
-			</h:selectOneMenu>
-
-			<h:outputLabel value="RG" />
-			<h:inputText value="#{clienteBean.cliente.RG}"/>
-
-			<h:outputLabel value="CPF" />
-			<h:inputText value="#{clienteBean.cliente.cpf}"/>
-			
-			<h:outputLabel value="Data Nascimento" />
-			<h:inputText value="#{clienteBean.cliente.dataNascimento}">
-				<f:convertDateTime pattern="dd/MM/yyyy"/>
-			</h:inputText>
-
-			<h:outputLabel value="Contato" />
-			<h:inputText value="#{clienteBean.cliente.contato}"/>
-
-			<h:outputLabel value="Email" />
-			<h:inputText value="#{clienteBean.cliente.email}"/>
-
 			<h:commandButton value="Cadastrar" action="#{clienteBean.salvar}" />
 		</h:panelGrid>
 	</h:form>

@@ -23,21 +23,52 @@
 
 			<h:outputLabel value="Senha" />
 			<h:inputSecret value="#{userBean.usuario.senha}" />
-			
-			<h:outputLabel value="Cargo"/>
+
+			<h:outputLabel value="Cargo" />
 			<h:selectOneMenu value="#{userBean.usuario.cargo}">
-				<f:selectItem itemValue="ADMINISTRADOR" itemLabel="Administrador"/>
-				<f:selectItem itemValue="GERENTE" itemLabel="Gerente"/>
-				<f:selectItem itemValue="CAIXA" itemLabel="Caixa"/>
-				<f:selectItem itemValue="VENDEDOR" itemLabel="Vendedor"/>
-				<f:selectItem itemValue="ESTOQUE" itemLabel="Estoque"/>
-				<f:selectItem itemValue="EXPEDICAO" itemLabel="Expedição"/>	
+				<f:selectItem itemValue="ADMINISTRADOR" itemLabel="Administrador" />
+				<f:selectItem itemValue="GERENTE" itemLabel="Gerente" />
+				<f:selectItem itemValue="CAIXA" itemLabel="Caixa" />
+				<f:selectItem itemValue="VENDEDOR" itemLabel="Vendedor" />
+				<f:selectItem itemValue="ESTOQUE" itemLabel="Estoque" />
+				<f:selectItem itemValue="EXPEDICAO" itemLabel="Expedição" />
 			</h:selectOneMenu>
-			
-			<br/>
+
+			<br />
 
 			<h:commandButton value="Cadastrar" action="#{userBean.salva}" />
+
 		</h:panelGrid>
+
+		<br />
+
+		<h:dataTable value="#{userBean.usuarios}" var="user" border="1">
+
+			<f:facet name="heade">
+				<h:outputLabel value="Lista de Usuários cadastrados" />
+			</f:facet>
+
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				<h:outputText value="#{user.id}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Login</f:facet>
+				<h:outputText value="#{user.login}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Senha</f:facet>
+				<h:outputText value="#{user.senha}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Cargo</f:facet>
+				<h:outputText value="#{user.cargo}" />
+			</h:column>
+
+		</h:dataTable>
 	</h:form>
 
 
