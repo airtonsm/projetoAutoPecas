@@ -51,7 +51,7 @@
 	</h:form>
 	
 	
-	<h:form id="formTable" style="margin-top:5%; margin-left:40%">
+	<h:form id="formTable" style="margin-top:5%; margin-left:30%">
 	
 		<h:dataTable value="#{userBean.usuarios}" var="user" border="1">
 
@@ -81,9 +81,10 @@
 
 			<h:column>
 				<f:facet name="header">Excluir</f:facet>
-				<h:commandButton value="Excluir" action="#{userBean.delete}">
+				<h:commandLink action="#{userBean.delete}">
 					<f:setPropertyActionListener value="#{user}" target="#{userBean.usuario}"/>
-				</h:commandButton>
+					<h:graphicImage value="/resources/img/delete.png" title="Excluir"/>
+				</h:commandLink>
 			</h:column>
 
 		</h:dataTable>
