@@ -70,9 +70,13 @@ public class UserBean implements Serializable {
 	}
 	
 	public String salva() {
-		daoGeneric.salvar(usuario);
-		usuario = new Usuario();
+		usuario = daoGeneric.merge(usuario);
 		carregarUsuario();
+		return "";
+	}
+	
+	public String novo() {
+		usuario = new Usuario();
 		return "";
 	}
 	

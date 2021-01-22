@@ -20,6 +20,20 @@ public class DaoGeneric<E> {
 		entityManager.close();
 	}
 	
+	public E merge(E entidade) {
+		EntityManager entityManager = JpaUtil.getEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction(); // iniciar transaçãp
+		entityTransaction.begin();
+
+		E retorno = entityManager.merge(entidade);
+
+		entityTransaction.commit();
+		entityManager.close();
+		
+		return retorno;
+	}
+	
+	
 	public void delete(E entidade) {
 		EntityManager entityManager = JpaUtil.getEntityManager();
 		EntityTransaction entityTransaction = entityManager.getTransaction(); // iniciar transaçãp
