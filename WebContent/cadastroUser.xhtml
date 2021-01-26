@@ -40,19 +40,20 @@
 			</h:selectOneMenu>
 
 			<br />
-
-			<h:commandButton value="Cadastrar" action="#{userBean.salva}" />
-			<h:commandButton value="Novo" action="#{userBean.novo}" />
-
+			<h:column>
+				<h:commandButton value="Cadastrar" action="#{userBean.salva}" style="margin-right:0.5cm"/>
+			
+				<h:commandButton value="Limpar" action="#{userBean.novo}" style="margin-right:0.5cm"/>
+			</h:column>
 		</h:panelGrid>
 
 		<br />
 
 	</h:form>
-	
-	
+
+
 	<h:form id="formTable" style="margin-top:5%; margin-left:30%">
-	
+
 		<h:dataTable value="#{userBean.usuarios}" var="user" border="1">
 
 			<f:facet name="header">
@@ -82,8 +83,18 @@
 			<h:column>
 				<f:facet name="header">Excluir</f:facet>
 				<h:commandLink action="#{userBean.delete}">
-					<f:setPropertyActionListener value="#{user}" target="#{userBean.usuario}"/>
-					<h:graphicImage value="/resources/img/delete.png" title="Excluir"/>
+					<f:setPropertyActionListener value="#{user}"
+						target="#{userBean.usuario}" />
+					<h:graphicImage value="/resources/img/delete.png" title="Excluir" />
+				</h:commandLink>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Editar</f:facet>
+				<h:commandLink>
+					<f:setPropertyActionListener value="#{user}"
+						target="#{userBean.usuario}" />
+					<h:graphicImage value="/resources/img/edit.png" title="Editar" />
 				</h:commandLink>
 			</h:column>
 
