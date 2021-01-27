@@ -41,9 +41,11 @@
 
 			<br />
 			<h:column>
-				<h:commandButton value="Cadastrar" action="#{userBean.salva}" style="margin-right:0.5cm"/>
-			
-				<h:commandButton value="Limpar" action="#{userBean.novo}" style="margin-right:0.5cm"/>
+				<h:commandButton value="Cadastrar" action="#{userBean.salva}"
+					style="margin-right:0.5cm" />
+
+				<h:commandButton value="Limpar" action="#{userBean.novo}"
+					style="margin-right:0.5cm" />
 			</h:column>
 		</h:panelGrid>
 
@@ -51,9 +53,17 @@
 
 	</h:form>
 
-
 	<h:form id="formTable" style="margin-top:5%; margin-left:30%">
 
+		<h:column style="margin-top:5%">
+			<h:outputLabel value="Pesquisar Usuário: " />
+			<h:inputText value="#{userBean.usuario.login}" />
+			<h:commandButton value="Pesquisar" action="#{userBean.buscarUsuario}" />
+		</h:column>
+		
+		<br />
+		<br />
+		
 		<h:dataTable value="#{userBean.usuarios}" var="user" border="1">
 
 			<f:facet name="header">

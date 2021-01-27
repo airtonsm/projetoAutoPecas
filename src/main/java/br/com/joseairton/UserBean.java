@@ -100,5 +100,9 @@ public class UserBean implements Serializable {
 	public void carregarUsuario() {
 		usuarios = daoGeneric.getListEntitie(Usuario.class);
 	}
-
+	
+	public String buscarUsuario() {
+		usuarios = daoGeneric.getListSearchLogin(Usuario.class, usuario.getLogin());
+		return"";
+	}
 }

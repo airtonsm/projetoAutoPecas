@@ -51,7 +51,8 @@ public class DaoGeneric<E> {
 		entityTransaction.begin();		
 		
 		Object id = JpaUtil.getPrimaryKey(entidade);		
-		entityManager.createQuery("delete from " + entidade.getClass().getSimpleName() + " where id = " + id)
+		entityManager.createQuery("delete from " + entidade.getClass().getSimpleName() 
+				+ " where id = " + id)
 		.executeUpdate();
 
 		entityTransaction.commit();
@@ -72,5 +73,22 @@ public class DaoGeneric<E> {
 		
 		return retorno;
 	} 
+	
+	public List<E> getListSearchLogin(Class<E> entidade, String login){
+		EntityManager entityManager = JpaUtil.getEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction(); // iniciar transaçãp
+		entityTransaction.begin();
+		
+		List<E> retorno = entityManager.createQuery("from " +  entidade.getName() 
+		+ " where login = " + login).getResultList();	
+		
+		entityTransaction.commit();
+		entityManager.close();
+		
+		return retorno;
+	} 
+	
+	
+	
 
 }
