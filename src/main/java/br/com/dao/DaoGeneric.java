@@ -74,21 +74,6 @@ public class DaoGeneric<E> {
 		return retorno;
 	} 
 	
-	public List<E> getListSearchLogin(Class<E> entidade, String login){
-		EntityManager entityManager = JpaUtil.getEntityManager();
-		EntityTransaction entityTransaction = entityManager.getTransaction(); // iniciar transaçãp
-		entityTransaction.begin();
 		
-		List<E> retorno = entityManager.createQuery("from " +  entidade.getName() 
-		+ " where login = " + login).getResultList();	
-		
-		entityTransaction.commit();
-		entityManager.close();
-		
-		return retorno;
-	} 
-	
-	
-	
 
 }

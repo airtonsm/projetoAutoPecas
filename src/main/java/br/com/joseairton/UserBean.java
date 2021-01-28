@@ -87,13 +87,17 @@ public class UserBean implements Serializable {
 		return "";
 	}
 
-	public boolean permiteAcesso(String acesso) {
+	public boolean permiteAcesso() {
 
 		FacesContext context = FacesContext.getCurrentInstance();
 		ExternalContext externalContext = context.getExternalContext();
 		Usuario user = (Usuario) externalContext.getSessionMap().get("usuarioLogado");
-
-		return user.getCargo().equals(acesso);
+		if (user.getCargo().equals("ADMINISTRADOR") || user.getCargo().equals("GERENTE")) {
+			return true;
+		} else {
+			return false;
+		}
+		
 	}
 
 	@PostConstruct 
@@ -102,7 +106,7 @@ public class UserBean implements Serializable {
 	}
 	
 	public String buscarUsuario() {
-		usuarios = daoGeneric.getListSearchLogin(Usuario.class, usuario.getLogin());
+		usuarios = idaoUsuario.getListSearchLogin(usuario.getLogin().toLowerCase());
 		return"";
 	}
 }

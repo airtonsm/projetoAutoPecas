@@ -1,8 +1,11 @@
 package br.com.repositorio;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import br.com.dao.DaoGeneric;
 import br.com.entities.Usuario;
 import br.com.jpaUtil.JpaUtil;
 
@@ -29,5 +32,20 @@ public class IDaoUsuarioImpl implements IDaoUsuario {
 
 		return usuario;
 	}
+	
+	@Override
+	public List<Usuario> getListSearchLogin(String login){
+		EntityManager entityManager = JpaUtil.getEntityManager();
+		EntityTransaction entityTransaction = entityManager.getTransaction(); // iniciar transaçãp
+		entityTransaction.begin();
+		
+		List<Usuario> retorno = entityManager.createQuery("from Usuario"
+		+ " where lower(login) like '%" + login.toLowerCase() + "%'").getResultList();	
+		
+		entityTransaction.commit();
+		entityManager.close();
+		
+		return retorno;
+	} 
 
 }
