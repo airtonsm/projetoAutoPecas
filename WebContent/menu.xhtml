@@ -11,7 +11,7 @@
 
 	<h:form id="formMenu" style="margin-top:3%; margin-left:28%">
 
-		<h:column rendered="#{userBean.permiteAcesso}">
+		<h:column rendered="#{userBean.permiteAcesso('ADMINISTRADOR')}">
 			<h:commandLink value="Cadastrar Usuário" action="cadastroUser"
 				style="margin-left:1cm" />
 		</h:column>

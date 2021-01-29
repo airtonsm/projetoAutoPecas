@@ -87,20 +87,15 @@ public class UserBean implements Serializable {
 		return "";
 	}
 
-	public boolean permiteAcesso() {
+	public boolean permiteAcesso(String acesso) {
 
 		FacesContext context = FacesContext.getCurrentInstance();
 		ExternalContext externalContext = context.getExternalContext();
 		Usuario user = (Usuario) externalContext.getSessionMap().get("usuarioLogado");
-		if (user.getCargo().equals("ADMINISTRADOR") || user.getCargo().equals("GERENTE")) {
-			return true;
-		} else {
-			return false;
-		}
-		
+		return user.getCargo().equals(acesso);		
 	}
 
-	@PostConstruct 
+	@PostConstruct // carrega lista user cadastrados ao open page
 	public void carregarUsuario() {
 		usuarios = daoGeneric.getListEntitie(Usuario.class);
 	}

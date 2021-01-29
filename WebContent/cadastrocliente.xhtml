@@ -43,12 +43,15 @@
 			</h:column>
 			<br />
 			<h:column>
-				<h:outputLabel value="Data Nascimento "  />
-				<h:inputText value="#{clienteBean.cliente.dataNascimento}" style="margin-right:0.5cm">
-					<f:convertDateTime pattern="dd/MM/yyyy" />
+				<h:outputLabel value="Data Nascimento " />
+				<h:inputText value="#{clienteBean.cliente.dataNascimento}"
+					style="margin-right:0.5cm">
+					<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR"
+						timeZone="GMT-03:00" />
 				</h:inputText>
 
-
+				<h:outputLabel value="CEP: " />
+				<h:inputText style="margin-right:0.5cm" />
 
 				<h:outputLabel value="Contato " />
 				<h:inputText value="#{clienteBean.cliente.contato}"
@@ -62,9 +65,75 @@
 			</h:column>
 
 			<br />
-			
-			<h:commandButton value="Cadastrar" action="#{clienteBean.salvar}" />
+
+			<h:column>
+				<h:commandButton value="Cadastrar" action="#{clienteBean.salvar}"
+					style="margin-right:0.5cm" />
+
+				<h:commandButton value="Limpar Campos"
+					action="#{clienteBean.limpar}" />
+			</h:column>
 		</h:panelGrid>
+	</h:form>
+
+	<h:outputLabel />
+
+	<h:form id="formTable" style="margin-top:5%; margin-left:15%">
+
+		<h:dataTable value="#{clienteBean.clientes}" var="c" border="1">
+			<f:facet name="header">
+				<h:outputLabel value="Lista de Clientes Cadastrados" />
+			</f:facet>
+
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				<h:outputText value="#{c.id}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Nome/Razão</f:facet>
+				<h:outputText value="#{c.nome}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Sexo</f:facet>
+				<h:outputText value="#{c.sexo}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">CPF</f:facet>
+				<h:outputText value="#{c.cpf}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Data Nascimento</f:facet>
+				<h:outputText value="#{c.dataNascimento}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Endereco</f:facet>
+				<h:outputText />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Contato</f:facet>
+				<h:outputText value="#{c.contato}" />
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Email</f:facet>
+				<h:outputText value="#{c.email}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Editar</f:facet>
+				<h:outputText/>
+			</h:column>
+
+		</h:dataTable>
+
+
+
 	</h:form>
 
 
