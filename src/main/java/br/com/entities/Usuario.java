@@ -7,6 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
+import org.hibernate.validator.constraints.NotBlank;
+
+
 @Entity
 public class Usuario implements Serializable {
 
@@ -15,11 +19,14 @@ public class Usuario implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
+	
+	@NotBlank(message = "Por favor, insira login")
 	private String login;
 
+	@NotBlank(message = "Por favor, insira senha")
 	private String senha;
 	
+	@NotBlank(message = "Por favor, insira cargo")	
 	private String cargo;
 	
 	public Usuario() {

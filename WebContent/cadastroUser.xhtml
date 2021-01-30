@@ -14,10 +14,15 @@
 
 	<ui:include src="/menu.xhtml"></ui:include>
 
-	<h1 style="margin-top: 2%; margin-left: 40%; color: blue">Cadastro de Usuários</h1>
+	<h1 style="margin-top: 2%; margin-left: 40%; color: blue">Cadastro
+		de Usuários</h1>
 
-	<h:form style="margin-top:5%; margin-left:40%">
-		<h:panelGrid>
+	<h:form id="formUser" style="margin-top:5%; margin-left:40%"
+		enctype="multipart/form-data">
+
+		<h:messages infoStyle="color:green" />
+
+		<h:panelGrid rendered="true">
 
 
 			<h:outputLabel value="Id" />
@@ -60,10 +65,10 @@
 			<h:inputText value="#{userBean.usuario.login}" />
 			<h:commandButton value="Pesquisar" action="#{userBean.buscarUsuario}" />
 		</h:column>
-		
+
 		<br />
 		<br />
-		
+
 		<h:dataTable value="#{userBean.usuarios}" var="user" border="1">
 
 			<f:facet name="header">
@@ -91,22 +96,24 @@
 			</h:column>
 
 			<h:column>
+				<f:facet name="header">Editar</f:facet>
+				<h:commandLink immediate="true">
+					<f:setPropertyActionListener value="#{user}"
+						target="#{userBean.usuario}" />
+					<h:graphicImage value="/resources/img/edit.png" title="Editar" />
+				</h:commandLink>
+			</h:column>
+
+			<h:column>
 				<f:facet name="header">Excluir</f:facet>
-				<h:commandLink action="#{userBean.delete}">
+				<h:commandLink action="#{userBean.delete}" immediate="true">
 					<f:setPropertyActionListener value="#{user}"
 						target="#{userBean.usuario}" />
 					<h:graphicImage value="/resources/img/delete.png" title="Excluir" />
 				</h:commandLink>
 			</h:column>
 
-			<h:column>
-				<f:facet name="header">Editar</f:facet>
-				<h:commandLink>
-					<f:setPropertyActionListener value="#{user}"
-						target="#{userBean.usuario}" />
-					<h:graphicImage value="/resources/img/edit.png" title="Editar" />
-				</h:commandLink>
-			</h:column>
+
 
 		</h:dataTable>
 	</h:form>

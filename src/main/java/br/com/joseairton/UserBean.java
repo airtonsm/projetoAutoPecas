@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
@@ -71,6 +72,7 @@ public class UserBean implements Serializable {
 	
 	public String salva() {
 		usuario = daoGeneric.merge(usuario);
+		mostrarMsg("Cadastrado com Sucesso");
 		carregarUsuario();
 		return "";
 	}
@@ -82,6 +84,7 @@ public class UserBean implements Serializable {
 	
 	public String delete() {
 		daoGeneric.deletePorId(usuario);
+		mostrarMsg("Usuario Deletado");
 		usuario = new Usuario();
 		carregarUsuario();
 		return "";
@@ -103,5 +106,12 @@ public class UserBean implements Serializable {
 	public String buscarUsuario() {
 		usuarios = idaoUsuario.getListSearchLogin(usuario.getLogin().toLowerCase());
 		return"";
+	}
+	
+	private void mostrarMsg(String msg) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		FacesMessage message = new FacesMessage(msg);
+		context.addMessage(null, message);
+
 	}
 }
