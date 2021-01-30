@@ -19,49 +19,80 @@
 	<h:form style="margin-top:5%; margin-left:5%">
 		<h:panelGrid>
 			<h:column>
-				<h:outputLabel value="Nome/Razão Social " />
+				<h:outputLabel value="Nome/Razão Social: " />
 				<h:inputText value="#{clienteBean.cliente.nome}"
 					style="margin-right:0.5cm" />
 
 
-				<h:outputLabel value="Sexo " />
+				<h:outputLabel value="Sexo: " />
 				<h:selectOneMenu value="#{clienteBean.cliente.sexo}"
 					style="margin-right:0.5cm">
 					<f:selectItem itemValue="M" itemLabel="Masculino" />
 					<f:selectItem itemValue="F" itemLabel="Feminino" />
-					<f:selectItem itemLabel="[--Selecionar sexo--]" />
+					<f:selectItem itemLabel="[--sexo--]" noSelectionOption="true" />
 				</h:selectOneMenu>
 
 
-				<h:outputLabel value="RG " />
-				<h:inputText value="#{clienteBean.cliente.RG}"
-					style="margin-right:0.5cm" />
+				<h:outputLabel value="CPF/CNPJ: " />
+				<h:inputText value="#{clienteBean.cliente.cpf}"
+					style="margin-right:0.2cm" />
 
-				<h:outputLabel value="CPF " />
-				<h:inputText value="#{clienteBean.cliente.cpf}" />
 
-			</h:column>
-			<br />
-			<h:column>
-				<h:outputLabel value="Data Nascimento " />
+
+				<h:outputLabel value="Data Nasc: " />
 				<h:inputText value="#{clienteBean.cliente.dataNascimento}"
 					style="margin-right:0.5cm">
 					<f:convertDateTime pattern="dd/MM/yyyy" locale="pt_BR"
 						timeZone="GMT-03:00" />
 				</h:inputText>
-
+			</h:column>
+			<br />
+			<h:column>
 				<h:outputLabel value="CEP: " />
-				<h:inputText style="margin-right:0.5cm" />
+				<h:inputText value="#{clienteBean.cliente.cep}"
+					style="margin-right:0.2cm">
+					<f:ajax event="blur" execute="@this"
+						listener="#{clienteBean.pesquisaCep}" />
+				</h:inputText>
 
-				<h:outputLabel value="Contato " />
+				<h:outputLabel value="Endereço: " />
+				<h:inputText style="margin-right:0.2cm" />
+
+				<h:outputLabel value="Logradouro: " />
+				<h:inputText style="margin-right:0.2cm" />
+
+				<h:outputLabel value="Número: " />
+				<h:inputText style="margin-right:0.2cm" />
+
+			</h:column>
+
+			<br />
+
+			<h:column>
+
+				<h:outputLabel value="Cidade: " />
+				<h:inputText style="margin-right:0.2cm" />
+
+				<h:outputLabel value="Estado: " />
+				<h:inputText style="margin-right:0.2cm" />
+
+				<h:outputLabel value="Complemento:  " />
+				<h:inputText style="margin-right:0.2cm" />
+
+			</h:column>
+
+			<br />
+			<h:column>
+				<h:outputLabel value="Contato: " />
 				<h:inputText value="#{clienteBean.cliente.contato}"
 					style="margin-right:0.5cm" />
 
 
 
-				<h:outputLabel value="Email " />
+				<h:outputLabel value="Email: " />
 				<h:inputText value="#{clienteBean.cliente.email}"
 					style="margin-right:0.5cm" />
+
 			</h:column>
 
 			<br />
@@ -124,10 +155,10 @@
 				<f:facet name="header">Email</f:facet>
 				<h:outputText value="#{c.email}" />
 			</h:column>
-			
+
 			<h:column>
 				<f:facet name="header">Editar</f:facet>
-				<h:outputText/>
+				<h:outputText />
 			</h:column>
 
 		</h:dataTable>

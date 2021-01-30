@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+
 @Entity
 public class Cliente implements Serializable{
 	
@@ -33,6 +34,16 @@ public class Cliente implements Serializable{
 	private String contato;
 	
 	private String email;
+	
+	private String cep;
+	
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+	
+	public String getCep() {
+		return cep;
+	}
 
 	public Long getId() {
 		return id;
