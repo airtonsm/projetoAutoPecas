@@ -37,6 +37,9 @@ public class Cliente implements Serializable{
 	
 	private String cep;
 	
+	public Cliente(){		
+	}
+	
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
@@ -133,6 +136,8 @@ public class Cliente implements Serializable{
 			return false;
 		return true;
 	}
+
+
 	
 	
 	

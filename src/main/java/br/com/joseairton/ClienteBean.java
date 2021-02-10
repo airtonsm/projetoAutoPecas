@@ -19,13 +19,18 @@ import br.com.entities.Cliente;
 
 @ViewScoped
 @ManagedBean(name = "clienteBean")
-public class ClienteBean implements Serializable{
-	
+public class ClienteBean implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	private DaoGeneric<Cliente> daoGeneric = new DaoGeneric<Cliente>();
 	private Cliente cliente = new Cliente();
-	
+	private DaoGeneric<Cliente> daoGeneric = new DaoGeneric<Cliente>();
+
 	List<Cliente> clientes = new ArrayList<Cliente>();
+
+	@PostConstruct
+	public void carregarClientes() {
+		clientes = daoGeneric.getListEntitie(Cliente.class);
+	}
 
 	public DaoGeneric<Cliente> getDaoGeneric() {
 		return daoGeneric;
@@ -42,57 +47,49 @@ public class ClienteBean implements Serializable{
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
+
 	public List<Cliente> getClientes() {
 		return clientes;
 	}
-	
+
 	public void setClientes(List<Cliente> clientes) {
 		this.clientes = clientes;
 	}
-	
-	
+
 	public String salvar() {
 		daoGeneric.salvar(cliente);
 		carregarClientes();
-		return"";
-	}
-	
-	@PostConstruct
-	public void carregarClientes() {
-		clientes = daoGeneric.getListEntitie(Cliente.class);
+		cliente = new Cliente();
+		return "";
 	}
 
 	public String limpar() {
 		cliente = new Cliente();
 		return "";
 	}
-	
+
 	public void pesquisaCep(AjaxBehaviorEvent event) {
-		
+
 		try {
-			URL url = new URL("https://viacep.com.br/ws/" + cliente.getCep() +"/json/");
+			URL url = new URL("https://viacep.com.br/ws/" + cliente.getCep() + "/json/");
 			URLConnection connection = url.openConnection(); // abre conexão
 			InputStream is = connection.getInputStream();
 			BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
 
 			String cep = "";
 			StringBuilder jsonCep = new StringBuilder();
-			
-			while((cep = br.readLine()) != null){
+
+			while ((cep = br.readLine()) != null) {
 				jsonCep.append(cep);
 			}
-			
-			System.out.println(jsonCep);			
-				
-				
+
+			System.out.println(jsonCep);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Erro ao mostrar Cep: ");
 		}
-		
+
 	}
-	
-	
 
 }

@@ -17,7 +17,6 @@ public class DaoGeneric<E> {
 		entityManager.persist(entidade);
 
 		entityTransaction.commit();
-		entityManager.close();
 	}
 	
 	public E merge(E entidade) {

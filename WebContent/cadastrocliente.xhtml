@@ -47,6 +47,7 @@
 				</h:inputText>
 			</h:column>
 			<br />
+
 			<h:column>
 				<h:outputLabel value="CEP: " />
 				<h:inputText value="#{clienteBean.cliente.cep}"
@@ -142,11 +143,6 @@
 			</h:column>
 
 			<h:column>
-				<f:facet name="header">Endereco</f:facet>
-				<h:outputText />
-			</h:column>
-
-			<h:column>
 				<f:facet name="header">Contato</f:facet>
 				<h:outputText value="#{c.contato}" />
 			</h:column>
@@ -158,8 +154,14 @@
 
 			<h:column>
 				<f:facet name="header">Editar</f:facet>
-				<h:outputText />
+				<h:commandLink immediate="true" id="botaoeditar">
+					<h:graphicImage url="/resources/img/edit.png" />
+					<f:setPropertyActionListener value="#{c}"
+						target="#{clienteBean.cliente}" />
+
+				</h:commandLink>
 			</h:column>
+
 
 		</h:dataTable>
 
