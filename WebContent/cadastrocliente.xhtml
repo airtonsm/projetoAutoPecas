@@ -53,17 +53,19 @@
 				<h:inputText value="#{clienteBean.cliente.cep}"
 					style="margin-right:0.2cm">
 					<f:ajax event="blur" execute="@this"
-						listener="#{clienteBean.pesquisaCep}" />
+					render="endereco logradoura cidade estado complemento"
+						listener="#{clienteBean.pesquisaCep}" 
+						/>
 				</h:inputText>
 
 				<h:outputLabel value="Endereço: " />
-				<h:inputText style="margin-right:0.2cm" />
+				<h:inputText value="#{clienteBean.cliente.bairro}" style="margin-right:0.2cm" id="endereco"/>
 
 				<h:outputLabel value="Logradouro: " />
-				<h:inputText style="margin-right:0.2cm" />
+				<h:inputText value="#{clienteBean.cliente.logradouro}" style="margin-right:0.2cm" id="logradoura"/>
 
 				<h:outputLabel value="Número: " />
-				<h:inputText style="margin-right:0.2cm" />
+				<h:inputText value="#{clienteBean.cliente.numero}" style="margin-right:0.2cm" />
 
 			</h:column>
 
@@ -72,13 +74,13 @@
 			<h:column>
 
 				<h:outputLabel value="Cidade: " />
-				<h:inputText style="margin-right:0.2cm" />
+				<h:inputText value="#{clienteBean.cliente.localidade}" style="margin-right:0.2cm" id="cidade"/>
 
 				<h:outputLabel value="Estado: " />
-				<h:inputText style="margin-right:0.2cm" />
+				<h:inputText value="#{clienteBean.cliente.uf}" style="margin-right:0.2cm" id="estado"/>
 
 				<h:outputLabel value="Complemento:  " />
-				<h:inputText style="margin-right:0.2cm" />
+				<h:inputText value="#{clienteBean.cliente.complemento}" style="margin-right:0.2cm" id="complemento"/>
 
 			</h:column>
 
@@ -100,7 +102,7 @@
 
 			<h:column>
 				<h:commandButton value="Cadastrar" action="#{clienteBean.salvar}"
-					style="margin-right:0.5cm" />
+					style="margin-right:0.5cm" immediate="true"/>
 
 				<h:commandButton value="Limpar Campos"
 					action="#{clienteBean.limpar}" />
@@ -161,7 +163,13 @@
 
 				</h:commandLink>
 			</h:column>
-
+			
+			<h:column>
+				<f:facet name="header">Delete</f:facet>
+				<h:commandLink value="Excluir" id="botaodelete" action="#{clienteBean.delete}" immediate="true">
+					<f:setPropertyActionListener value="#{c}" target="#{clienteBean.cliente}"/>
+				</h:commandLink>
+			</h:column>
 
 		</h:dataTable>
 

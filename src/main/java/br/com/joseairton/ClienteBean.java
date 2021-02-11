@@ -14,6 +14,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.event.AjaxBehaviorEvent;
 
+import com.google.gson.Gson;
+
 import br.com.dao.DaoGeneric;
 import br.com.entities.Cliente;
 
@@ -62,6 +64,12 @@ public class ClienteBean implements Serializable {
 		cliente = new Cliente();
 		return "";
 	}
+	
+	public String delete() {
+		daoGeneric.deletePorId(cliente);
+		cliente = new Cliente();
+		return"";
+	}
 
 	public String limpar() {
 		cliente = new Cliente();
@@ -80,11 +88,23 @@ public class ClienteBean implements Serializable {
 			StringBuilder jsonCep = new StringBuilder();
 
 			while ((cep = br.readLine()) != null) {
+				
 				jsonCep.append(cep);
 			}
 
-			System.out.println(jsonCep);
-
+			Cliente userCepPessoa = new Gson().fromJson(jsonCep.toString(), Cliente.class);
+			
+			cliente.setCep(userCepPessoa.getCep());
+			cliente.setLogradouro(userCepPessoa.getLogradouro());
+			cliente.setComplemento(userCepPessoa.getComplemento());
+			cliente.setBairro(userCepPessoa.getBairro());
+			cliente.setLocalidade(userCepPessoa.getLocalidade());
+			cliente.setUf(userCepPessoa.getUf());
+			cliente.setIbge(userCepPessoa.getIbge());
+			cliente.setGia(userCepPessoa.getGia());
+			cliente.setDdd(userCepPessoa.getDdd());
+			cliente.setSiafi(userCepPessoa.getSiafi());
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Erro ao mostrar Cep: ");
